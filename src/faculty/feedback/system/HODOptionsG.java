@@ -8,6 +8,7 @@ package faculty.feedback.system;
 import static faculty.feedback.system.FacultyFeedbackSystem.DB_URL;
 import static faculty.feedback.system.FacultyFeedbackSystem.USER;
 import static faculty.feedback.system.FacultyFeedbackSystem.PASS;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -58,11 +59,13 @@ try
                         if(otptrue)
                         {
                             JOptionPane.showMessageDialog(null, "OTP  reset"); 
+                            timer.cancel();
+                            timer.purge();
                         }
                         otptrue=false;
                         
                          //OTPGEN.setText(c);
-                         threadotp();
+                        // threadotp();
         }
         catch(Exception e)
         {
@@ -76,11 +79,136 @@ try
 
     timer.schedule(delayedThreadStartTask, 60 * 1000); //1 minute
 }
+    
+    public void threadNotify_Students() {
+    // Do your startup work here
+    System.out.println("Started....");
+    Timer timer = new Timer();
 
+    TimerTask delayedThreadStartTask = new TimerTask() {
+        @Override
+        public void run() {
+
+            //captureCDRProcess();
+            //moved to TimerTask
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+try
+        {
+            ResultSet rs= null;
+            Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);   
+            Statement stmt = conn.createStatement();
+            
+                        rs = stmt.executeQuery("SELECT `Notify Students` FROM `HODS` WHERE `NAME`='"+hodEntered.ename+"';");
+                       // rs.next();
+                       rs.absolute(1);
+                        int noti=rs.getInt("Notify Students");
+                        System.out.println(noti);
+                        if(noti>0)
+                        {
+                             jLabel16.setText("NEW");
+                             jButton7.setForeground(Color.red);
+                              jButton7.setContentAreaFilled(false);
+                               jButton7.setOpaque(false);
+                        }
+                          
+                        else
+                        {
+                           jLabel16.setText(""); 
+                           jButton7.setForeground(Color.black);
+                               jButton7.setOpaque(false);
+                           
+                        }
+                           
+                        if(timercount)
+                        {
+                           // JOptionPane.showMessageDialog(null, "stopped");
+                            timer.cancel();
+                            timer.purge();
+                        }
+                        threadNotify_Students();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+                    
+                }
+            }).start();
+        }
+    };
+
+    timer.schedule(delayedThreadStartTask, 5 * 1000); //1 minute
+}
+    
+    public void threadNotify_Faculty() {
+    // Do your startup work here
+    System.out.println("Started....");
+    Timer timer = new Timer();
+
+    TimerTask delayedThreadStartTask = new TimerTask() {
+        @Override
+        public void run() {
+
+            //captureCDRProcess();
+            //moved to TimerTask
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+try
+        {
+            ResultSet rs= null;
+            Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);   
+            Statement stmt = conn.createStatement();
+            
+                        rs = stmt.executeQuery("SELECT `Notify Faculty` FROM `HODS` WHERE `NAME`='"+hodEntered.ename+"';");
+                        rs.absolute(1);
+                        int noti=rs.getInt("Notify Faculty");
+                        if(noti>0)
+                        {
+                            jLabel17.setText("NEW");
+                             jButton8.setForeground(Color.red);
+                              jButton8.setContentAreaFilled(false);
+                               jButton8.setOpaque(false);
+                        }
+                        
+                        else
+                             {
+                           jLabel17.setText(""); 
+                            jButton8.setForeground(Color.black);
+                               jButton8.setOpaque(false);
+                           
+                        }
+                           
+                        if(timercount)
+                        {
+                            //JOptionPane.showMessageDialog(null, "stopped");
+                            timer.cancel();
+                            timer.purge();
+                        }
+                        threadNotify_Faculty();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+                    
+                }
+            }).start();
+        }
+    };
+
+    timer.schedule(delayedThreadStartTask, 10 * 1000); //1 minute
+}
+    
     public HODOptionsG() {
         initComponents();
         PrintName.setText(hodEntered.ename);
+        threadNotify_Students();
+         threadNotify_Faculty();
     }
+    static boolean timercount= false;
  public void diaplaytab()
  {
      try
@@ -106,7 +234,7 @@ try
         }
  }
  public void part()
- {
+ { // To display only a part of the faculty table
      try
         {
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);   
@@ -134,9 +262,11 @@ try
  }
  public void close()
     {
+        timercount=true;
         WindowEvent wce = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wce);
         //Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wce);
+        
         
     }
     /**
@@ -185,11 +315,12 @@ try
         TABS = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         FacTable = new javax.swing.JTable();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1180, 700));
-        setPreferredSize(new java.awt.Dimension(1180, 500));
         getContentPane().setLayout(null);
 
         jPanel1.setOpaque(false);
@@ -242,7 +373,6 @@ try
 
         jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         jButton7.setText("Student Remarks");
-        jButton7.setOpaque(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -251,7 +381,6 @@ try
 
         jButton8.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         jButton8.setText("Faculty Remarks");
-        jButton8.setOpaque(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -541,21 +670,25 @@ try
             TABSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TABSLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
                 .addContainerGap())
         );
         TABSLayout.setVerticalGroup(
             TABSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TABSLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(594, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(507, Short.MAX_VALUE))
         );
 
         Changes.add(TABS, "card4");
 
         getContentPane().add(Changes);
         Changes.setBounds(62, 129, 815, 828);
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(900, 50, 60, 20);
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(1040, 50, 60, 0);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/faculty/feedback/system/Icons/HODOpdtions.jpg"))); // NOI18N
         getContentPane().add(jLabel13);
@@ -614,10 +747,12 @@ try
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        otptrue=false;
+        this.setVisible(false);
         MainMenu obj1 = new MainMenu();
                 obj1.setVisible(true);
-                otptrue=false;
-                close();
+           timercount=true;      
+               close();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -686,7 +821,12 @@ try
         }
         try{
         Desktop desktop = Desktop.getDesktop();
-        if(file.exists()) desktop.open(file);
+        if(file.exists()) {
+            desktop.open(file); 
+             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);   
+            Statement stmt = conn.createStatement();
+             stmt.executeUpdate("Update `HODS` SET `Notify Students`=0 WHERE `NAME`='"+hodEntered.ename+"';");
+        }
         else
         {
             JOptionPane.showMessageDialog(null, "None of the students have entered any remarks"); 
@@ -706,7 +846,13 @@ try
         }
         try{
         Desktop desktop = Desktop.getDesktop();
-        if(file.exists()) desktop.open(file);
+        if(file.exists()) 
+        {
+            desktop.open(file);
+            Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);   
+            Statement stmt = conn.createStatement();
+             stmt.executeUpdate("Update `HODS` SET `Notify Faculty`=0 WHERE `NAME`='"+hodEntered.ename+"';");
+        }
         else
         {
             JOptionPane.showMessageDialog(null, "None of the faculty members have entered any remarks"); 
@@ -773,6 +919,8 @@ try
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
