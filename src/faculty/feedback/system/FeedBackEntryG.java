@@ -670,12 +670,12 @@ class validMarksEditor extends DefaultCellEditor
        if(!("".equals(ab)))
        {
            WFile();
-           sql="SELECT FROM `HODS` WHERE `DEP`="+FeedbackEntry.dep+"";
+           sql="SELECT `Notify Students` FROM `HODS` WHERE `Branch`='"+FeedbackEntry.dep+"';";
            rs = stmt.executeQuery(sql);
            rs.next();
-           int noti=rs.getInt(6);
+           int noti=rs.getInt("Notify Students");
            noti ++;
-           stmt.executeUpdate("Update `HODS` SET `Notify Students`='"+noti+"' WHERE `DEP`='"+FeedbackEntry.dep+"';");
+           stmt.executeUpdate("Update `HODS` SET `Notify Students`='"+noti+"' WHERE `Branch`='"+FeedbackEntry.dep+"';");
        
        }
        
