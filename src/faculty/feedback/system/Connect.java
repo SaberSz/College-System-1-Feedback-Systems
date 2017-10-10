@@ -20,7 +20,7 @@ public class Connect {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
     static final String DB_URL = "jdbc:mysql://mysql5.gear.host/collegedatabase";
    //static final String DB_URL = "jdbc:mysql://192.168.0.102:8889/College_Database_v0_1?zeroDateTimeBehavior=convertToNull";
-    static final double vers= 1.02;
+    static final double vers= 1.03;
    static final String USER = "collegedatabase";
    static final String PASS = "Rs6pI5-NHXi!";   
    static int c=0;
