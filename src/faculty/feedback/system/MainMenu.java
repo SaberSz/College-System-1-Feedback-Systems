@@ -16,6 +16,7 @@ import java.sql.*;
 
     //ds
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
 import java.util.TimerTask;
 import javax.swing.*;
 public class MainMenu extends javax.swing.JFrame {
@@ -153,7 +154,23 @@ timer.purge();   // Removes all cancelled tasks from this timer's task queue.
                 rs = stmt.executeQuery(sql);  
                 rs.absolute(1);
                 FacultyFeedbackSystem.formNumber=rs.getInt(5);
-                System.out.println(FacultyFeedbackSystem.formNumber);
+                System.out.println(FacultyFeedbackSystem.formNumber+5);
+                if(FacultyFeedbackSystem.formNumber>0)
+                {
+                    java.sql.Date date1 = new java.sql.Date(System.currentTimeMillis()) ;//current date
+                    String s2=rs.getString(8);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date date = sdf.parse(s2);
+                long millis = date.getTime();
+       
+                System.out.println( millis);
+                java.util.Date date2 = new java.sql.Date( millis);
+                if((date1.after(date2))){
+                    stmt.executeUpdate("Update `HODS` SET `Done Date`='0' WHERE 1");  
+                    FacultyFeedbackSystem.formNumber=0;
+                }
+            
+                }
                 tickTock.setText(Time.Time());
                 tick=true;
                 threadtock();

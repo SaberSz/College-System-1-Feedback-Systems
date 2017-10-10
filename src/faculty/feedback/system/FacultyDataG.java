@@ -101,7 +101,7 @@ public void WFile()
                         String k=FacComplaint.getText();
             k=FacultyData.eName+"\t"+Date.Date()+"\t"+Time.Time()+"\n"+k+"\n\n";
 
-			File file = new File("FacultyComplaint"+FacultyData.eDEP+".txt");
+			File file = new File("FacultyComplaint"+FacultyData.eDEP.toUpperCase()+".txt");
 
 			// if file doesnt exists, then create it
 			if (!file.exists()) {
@@ -185,6 +185,7 @@ public void WFile()
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFont(new java.awt.Font("Adobe Caslon Pro", 0, 10)); // NOI18N
+        setResizable(false);
 
         jScrollPane1.setOpaque(false);
 
@@ -348,7 +349,7 @@ public void WFile()
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
+        this.setVisible(false);
          MainMenu obj1 = new MainMenu();
                 obj1.setVisible(true);
                 close();
@@ -367,23 +368,28 @@ public void WFile()
              if(!("".equals(ab)))
              {
                  WFile();
-         //  String sql="SELECT FROM `HODS` WHERE `DEP`="+FacultyData.eDEP+"";
-          //  ResultSet  rs = stmt.executeQuery(sql);
-           //rs.next();
-          // int noti=rs.getInt(7);
-         //  noti ++;
-         //  stmt.executeUpdate("Update `HODS` SET `Notify Faculty`='"+noti+"' WHERE `DEP`='"+FacultyData.eDEP+"';");
+                 
+           String sql="SELECT * FROM `HODS` WHERE `Branch`='"+FacultyData.eDEP+"';";
+            ResultSet  rs = stmt.executeQuery(sql);
+           rs.absolute(1);
+                        int noti=rs.getInt("Notify Faculty");
+          noti ++;
+          stmt.executeUpdate("Update `HODS` SET `Notify Faculty`='"+noti+"' WHERE `Branch`='"+FacultyData.eDEP+"';");
            JOptionPane.showMessageDialog(null, "We will look into this matter and get back to you shortly");
-          // MainMenu obj1 = new MainMenu();
-          // obj1.setVisible(true);
-          // close(); 
+           this.setVisible(false);
+           MainMenu obj1 = new MainMenu();
+           obj1.setVisible(true);
+           close(); 
              }
+             else
+             {
            JOptionPane.showMessageDialog(null, "If you have no remarks please click the Done button");
+             }
 
         }
         catch(Exception e )
         {
-            
+            JOptionPane.showMessageDialog(null, e);
         }
         
       

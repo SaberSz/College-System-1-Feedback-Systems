@@ -158,7 +158,7 @@ class validMarksEditor extends DefaultCellEditor
                         String k=FACComplaint.getText();
             k=FeedbackEntry.dep+"\t"+FeedbackEntry.sem+"\t"+FeedbackEntry.sec+"\n"+Date.Date()+"\t"+Time.Time()+"\n"+k+"\n\n";
 
-			File file = new File("StudentComplaint"+FeedbackEntry.dep+".txt");
+			File file = new File("StudentComplaint"+FeedbackEntry.dep.toUpperCase()+".txt");
 
 			// if file doesnt exists, then create it
 			if (!file.exists()) {
@@ -330,7 +330,7 @@ class validMarksEditor extends DefaultCellEditor
             }
             else{
                  System.out.println("Invalid : "+r+" "+c);
-             JOptionPane.showMessageDialog(null, "Invalid Feedback. You have missed an entry. Make sure no fields are still in editing state");
+             JOptionPane.showMessageDialog(null, "Invalid Feedback. You have missed an entry. Make sure no fields are still in editing state "+r+"-"+c+"");
                 validated=false;
                 return 0;
             
@@ -672,7 +672,7 @@ class validMarksEditor extends DefaultCellEditor
            WFile();
            sql="SELECT `Notify Students` FROM `HODS` WHERE `Branch`='"+FeedbackEntry.dep+"';";
            rs = stmt.executeQuery(sql);
-           rs.next();
+           rs.absolute(1);
            int noti=rs.getInt("Notify Students");
            noti ++;
            stmt.executeUpdate("Update `HODS` SET `Notify Students`='"+noti+"' WHERE `Branch`='"+FeedbackEntry.dep+"';");
@@ -680,7 +680,7 @@ class validMarksEditor extends DefaultCellEditor
        }
        
        
-       
+       this.setVisible(false);
        MainMenu obj1 = new MainMenu();
                 obj1.setVisible(true);
                 close();
@@ -691,7 +691,7 @@ class validMarksEditor extends DefaultCellEditor
         
        catch(Exception e)
         {
-           e.printStackTrace();
+           JOptionPane.showMessageDialog(null, e);
            
         }
         
@@ -699,6 +699,7 @@ class validMarksEditor extends DefaultCellEditor
     }//GEN-LAST:event_jButton1ActionPerformed
 public void close()
     {
+        
         WindowEvent wce = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wce);
         //Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wce);

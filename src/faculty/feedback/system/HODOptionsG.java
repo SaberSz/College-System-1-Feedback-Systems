@@ -77,7 +77,7 @@ try
         }
     };
 
-    timer.schedule(delayedThreadStartTask, 60 * 1000); //1 minute
+    timer.schedule(delayedThreadStartTask, 300 * 1000); //5 minute
 }
     
     public void threadNotify_Students() {
@@ -104,6 +104,7 @@ try
                        // rs.next();
                        rs.absolute(1);
                         int noti=rs.getInt("Notify Students");
+                        
                         System.out.println(noti);
                         if(noti>0)
                         {
@@ -812,7 +813,7 @@ try
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         //text file, should be opening in default text editor
-        File file = new File("StudentComplaint"+hodEntered.dep+".txt");
+        File file = new File("StudentComplaint"+hodEntered.dep.toUpperCase()+".txt");
         
         //first check if Desktop is supported by Platform or not
         if(!Desktop.isDesktopSupported()){
@@ -837,7 +838,7 @@ try
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        File file = new File("FacultyComplaint"+hodEntered.dep+".txt");
+        File file = new File("FacultyComplaint"+hodEntered.dep.toUpperCase()+".txt");
         
         //first check if Desktop is supported by Platform or not
         if(!Desktop.isDesktopSupported()){

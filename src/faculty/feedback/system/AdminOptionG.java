@@ -12,6 +12,7 @@ import static faculty.feedback.system.FacultyFeedbackSystem.PASS;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -93,10 +94,14 @@ public class AdminOptionG extends javax.swing.JFrame {
         eDob2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        Subname = new javax.swing.JTextField();
         Feedform = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         Formno = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        DueDate = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -233,7 +238,7 @@ public class AdminOptionG extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                         .addGroup(NewstudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eDob, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(eUSN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -307,12 +312,12 @@ public class AdminOptionG extends javax.swing.JFrame {
                     .addGroup(DelStudLayout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(edob, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
+                    .addComponent(edob, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(DelStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(DelStudLayout.createSequentialGroup()
                     .addGap(172, 172, 172)
-                    .addComponent(eusn, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                    .addComponent(eusn, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         DelStudLayout.setVerticalGroup(
@@ -324,14 +329,14 @@ public class AdminOptionG extends javax.swing.JFrame {
                 .addGroup(DelStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(16, 16, 16))
             .addGroup(DelStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(DelStudLayout.createSequentialGroup()
                     .addGap(53, 53, 53)
                     .addComponent(eusn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(195, Short.MAX_VALUE)))
+                    .addContainerGap(203, Short.MAX_VALUE)))
         );
 
         Changes.add(DelStud, "card3");
@@ -395,7 +400,7 @@ public class AdminOptionG extends javax.swing.JFrame {
                             .addComponent(eUSN1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                             .addComponent(eDob1)
                             .addComponent(eclass1))))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         AddFaculLayout.setVerticalGroup(
             AddFaculLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,7 +433,7 @@ public class AdminOptionG extends javax.swing.JFrame {
                 .addGroup(AddFaculLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(subno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(14, 14, 14))
         );
@@ -456,6 +461,8 @@ public class AdminOptionG extends javax.swing.JFrame {
 
         jLabel15.setText("Date of Birth YYYY-MM-YY");
 
+        jLabel20.setText("Subject");
+
         javax.swing.GroupLayout DelFacLayout = new javax.swing.GroupLayout(DelFac);
         DelFac.setLayout(DelFacLayout);
         DelFacLayout.setHorizontalGroup(
@@ -463,15 +470,19 @@ public class AdminOptionG extends javax.swing.JFrame {
             .addGroup(DelFacLayout.createSequentialGroup()
                 .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DelFacLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel13))
-                    .addGroup(DelFacLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel15)))
-                .addGap(34, 34, 34)
-                .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eDob2)
-                    .addComponent(eclass2, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
+                        .addComponent(jLabel15)
+                        .addGap(34, 34, 34)
+                        .addComponent(eDob2))
+                    .addGroup(DelFacLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel20))
+                        .addGap(34, 34, 34)
+                        .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eclass2, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                            .addComponent(Subname))))
                 .addContainerGap())
             .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(DelFacLayout.createSequentialGroup()
@@ -479,7 +490,7 @@ public class AdminOptionG extends javax.swing.JFrame {
                     .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(DelFacLayout.createSequentialGroup()
                             .addComponent(jButton4)
-                            .addGap(0, 294, Short.MAX_VALUE))
+                            .addGap(0, 389, Short.MAX_VALUE))
                         .addGroup(DelFacLayout.createSequentialGroup()
                             .addComponent(jLabel14)
                             .addGap(34, 34, 34)
@@ -489,11 +500,15 @@ public class AdminOptionG extends javax.swing.JFrame {
         DelFacLayout.setVerticalGroup(
             DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DelFacLayout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(50, 50, 50)
+                .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
                     .addComponent(eDob2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(Subname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(DelFacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eclass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
@@ -513,12 +528,20 @@ public class AdminOptionG extends javax.swing.JFrame {
 
         Feedform.setOpaque(false);
 
-        jLabel16.setText("Form Number");
+        jLabel16.setText("FeedbackForm Number");
 
         jButton5.setText("Submit");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Stop Date");
+
+        DueDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DueDateActionPerformed(evt);
             }
         });
 
@@ -528,13 +551,16 @@ public class AdminOptionG extends javax.swing.JFrame {
             FeedformLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FeedformLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel16)
+                .addGroup(FeedformLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel21))
                 .addGap(45, 45, 45)
                 .addGroup(FeedformLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Formno)
                     .addGroup(FeedformLayout.createSequentialGroup()
                         .addComponent(jButton5)
-                        .addGap(0, 265, Short.MAX_VALUE))
-                    .addComponent(Formno)))
+                        .addGap(0, 301, Short.MAX_VALUE))
+                    .addComponent(DueDate)))
         );
         FeedformLayout.setVerticalGroup(
             FeedformLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,9 +569,13 @@ public class AdminOptionG extends javax.swing.JFrame {
                 .addGroup(FeedformLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Formno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(18, 18, 18)
+                .addGroup(FeedformLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(DueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addComponent(jButton5)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         Changes.add(Feedform, "card6");
@@ -568,7 +598,7 @@ public class AdminOptionG extends javax.swing.JFrame {
                 .addGroup(EntireLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(MainButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Changes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         jLabel18.setFont(new java.awt.Font("Copperplate", 0, 18)); // NOI18N
@@ -620,7 +650,7 @@ public class AdminOptionG extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Entire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -683,6 +713,9 @@ public class AdminOptionG extends javax.swing.JFrame {
              String sql1="INSERT INTO `Student Records`(`USN`, `DOB`, `Class`, `SEM`) VALUES ('"+eUSN.getText()+"','"+eDob.getText()+"','"+eclass.getText()+"','"+esec.getText()+"')";
                                      stmt.executeUpdate(sql1);  
                                      JOptionPane.showMessageDialog(null, "Done"); 
+                                     
+                                stmt.close();
+                                    conn.close();
             }
             catch(MySQLIntegrityConstraintViolationException e)
             {
@@ -713,9 +746,22 @@ public class AdminOptionG extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             Statement stmt = conn.createStatement();
             ResultSet rs = null;
-             String sql1="DELETE FROM `Student Records` WHERE `USN`='"+eusn.getText()+"' AND `DOB`='"+edob.getText()+"';";
+            String sql2= "SELECT * FROM `Student Records` WHERE `USN`='"+eusn.getText()+"'";
+            rs=stmt.executeQuery(sql2);
+            //rs.absolute(1);
+           
+            if((rs.next()))
+            {
+                String sql1="DELETE FROM `Student Records` WHERE `USN`='"+eusn.getText()+"' AND `DOB`='"+edob.getText()+"';";
                                     stmt.executeUpdate(sql1);
-              JOptionPane.showMessageDialog(null, "Done");                       
+              JOptionPane.showMessageDialog(null, "Done");               
+            } else {
+                JOptionPane.showMessageDialog(null, "No such student");      
+            }
+             rs.close();
+                                stmt.close();
+                                    conn.close();
+                     
         }
         catch(Exception e)
         {
@@ -731,9 +777,12 @@ public class AdminOptionG extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             Statement stmt = conn.createStatement();
             ResultSet rs = null;
-             String sql1="INSERT INTO `"+eclass1.getText()+"`(`Name`, `DOB`, `Class`, `Subject`,`SEM`,`subNumber) VALUES ('"+eUSN1.getText()+"','"+eDob1.getText()+"','"+eclasss.getText()+"','"+esubs.getText()+"','"+esec.getText()+"','"+subno.getText()+"');";
+             String sql1="INSERT INTO `"+eclass1.getText()+"`(`Name`, `DOB`, `Class`, `Subject`,`SEM`,`subNumber`) VALUES ('"+eUSN1.getText()+"','"+eDob1.getText()+"','"+eclasss.getText()+"','"+esubs.getText()+"','"+esec.getText()+"','"+subno.getText()+"');";
                                      stmt.executeUpdate(sql1);  
              JOptionPane.showMessageDialog(null, "Done"); 
+              
+                                stmt.close();
+                                    conn.close();
                                      
         }
         catch(Exception e)
@@ -759,10 +808,44 @@ public class AdminOptionG extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             Statement stmt = conn.createStatement();
             ResultSet rs = null;
-             String sql1="DELETE FROM `"+eclass2.getText()+"` WHERE `NAME`= '"+eUSN2.getText()+"' AND `DOB` = '"+eDob2.getText()+"';";
+            String k= Subname.getText();k=k.trim();
+            System.out.println(k);
+            if(!k.equals("")){
+            
+            String sql2= "SELECT * FROM `"+eclass2.getText()+"` WHERE `NAME`= '"+eUSN2.getText()+"' AND `DOB` = '"+eDob2.getText()+"' AND `Subject` = '"+Subname.getText()+"';";
+            rs=stmt.executeQuery(sql2);
+            //rs.absolute(1);
+           // System.out.println(rs.getString("Name"));
+           if(rs.next()){
+            
+            
+                String sql1="DELETE FROM `"+eclass2.getText()+"` WHERE `NAME`= '"+eUSN2.getText()+"' AND `DOB` = '"+eDob2.getText()+"' AND `Subject` = '"+Subname.getText()+"';";
                                      stmt.executeUpdate(sql1);  
-             JOptionPane.showMessageDialog(null, "Done"); 
-                                     
+             JOptionPane.showMessageDialog(null, "Done");               
+             }else {
+                JOptionPane.showMessageDialog(null, "Please check the entered Faculty details");      
+            }
+             
+            } 
+            else
+            {
+                
+                 String sql2= "SELECT * FROM `"+eclass2.getText()+"` WHERE `NAME`= '"+eUSN2.getText()+"' AND `DOB` = '"+eDob2.getText()+"';";
+            rs=stmt.executeQuery(sql2);
+           // rs.absolute(1);
+            if((rs.next()))
+            {
+                String sql1="DELETE FROM `"+eclass2.getText()+"` WHERE `NAME`= '"+eUSN2.getText()+"' AND `DOB` = '"+eDob2.getText()+"';";
+                                     stmt.executeUpdate(sql1);  
+             JOptionPane.showMessageDialog(null, "Done");               
+            } else {
+                JOptionPane.showMessageDialog(null, "Please check the entered Faculty details");      
+            }
+             
+            }
+             rs.close();
+                                stmt.close();
+                                    conn.close();
         }
         catch(Exception e)
         {
@@ -808,17 +891,43 @@ public class AdminOptionG extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             Statement stmt = conn.createStatement();
             ResultSet rs = null;
-             String sql1="UPDATE `HODS` SET `Form`='"+Formno.getText()+"' WHERE 1;";
+            String s ="SELECT CURDATE() as cu FROM `HODS`;";
+            rs=stmt.executeQuery(s);
+            if(rs.next()){
+                
+                java.sql.Date date1 = new java.sql.Date(System.currentTimeMillis()) ;//current date
+                String s2= DueDate.getText();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date date = sdf.parse(s2);
+                long millis = date.getTime();
+       
+                System.out.println( millis);
+                java.util.Date date2 = new java.sql.Date( millis);
+              
+                
+                if((date2.after(date1)) && ((Integer.valueOf(Formno.getText()))>-1) && ((Integer.valueOf(Formno.getText()))<4))
+                {
+                    String sql1="UPDATE `HODS` SET `Form`='"+Formno.getText()+"',`Done Date`='"+date2+"' WHERE 1;";
+                    stmt.executeUpdate(sql1);  
+                    JOptionPane.showMessageDialog(null, "Feedback Session Started"); 
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Invalid entry"); 
+                }
             
-                                     stmt.executeUpdate(sql1);  
-             JOptionPane.showMessageDialog(null, "Feedback Session Started"); 
-                                     
+                    rs.close();
+stmt.close();
+conn.close();
+             
+            }                        
         }
         catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
         }
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -832,6 +941,10 @@ public class AdminOptionG extends javax.swing.JFrame {
             
                                      stmt.executeUpdate(sql1);  
              JOptionPane.showMessageDialog(null, "Feedback Session Stopped"); 
+                                
+stmt.close();
+conn.close();
+             
                                      
         }
         catch(Exception e)
@@ -862,7 +975,10 @@ public class AdminOptionG extends javax.swing.JFrame {
                 obj2.setVisible(true);
                 close();
             }
-           
+                               rs.close();
+                                stmt.close();
+                                    conn.close();
+             
                                      
         }
         catch(Exception e)
@@ -871,6 +987,10 @@ public class AdminOptionG extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void DueDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DueDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DueDateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -912,11 +1032,13 @@ public class AdminOptionG extends javax.swing.JFrame {
     private javax.swing.JPanel Changes;
     private javax.swing.JPanel DelFac;
     private javax.swing.JPanel DelStud;
+    private javax.swing.JTextField DueDate;
     private javax.swing.JPanel Entire;
     private javax.swing.JPanel Feedform;
     private javax.swing.JTextField Formno;
     private javax.swing.JPanel MainButtons;
     private javax.swing.JPanel Newstud;
+    private javax.swing.JTextField Subname;
     private javax.swing.JTextField eDob;
     private javax.swing.JTextField eDob1;
     private javax.swing.JTextField eDob2;
@@ -956,6 +1078,8 @@ public class AdminOptionG extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

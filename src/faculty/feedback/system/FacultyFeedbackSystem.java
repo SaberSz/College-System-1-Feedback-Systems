@@ -49,6 +49,7 @@ static final String USER = "collegedatabase";
                 ResultSet rs = stmt.executeQuery(sql);  
                 rs.absolute(1);
                 formNumber=rs.getInt(5);
+                System.out.print("helfasdfsdfflo");
             System.out.println();
              CheckPer k=new CheckPer();
             A:while(true)
